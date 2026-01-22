@@ -152,9 +152,9 @@ export const stages = [
         response: "퇴근 후 아이를 안아주는 것이 하루의 가장 행복한 순간이었습니다."
       },
       {
-        text: "신앙 안에서 아이를 키우겠다",
-        effects: { faith: 15, family: 15, patience: 10 },
-        response: "아이를 축복하며 기도했습니다. 신앙의 가정을 이루겠다고 다짐했습니다."
+        text: "아내와 함께 육아를 분담하겠다",
+        effects: { love: 15, family: 20, patience: 10 },
+        response: "혼자가 아닌 둘이서 함께 키우기로 했습니다."
       }
     ]
   },
@@ -163,15 +163,10 @@ export const stages = [
     year: 1997,
     era: "격동의 시대",
     title: "IMF 외환위기",
-    description: "IMF 외환위기가 터졌습니다. 주변에서 하나둘 직장을 잃고 있습니다. 금모으기 운동이 시작되었습니다.",
+    description: "IMF 외환위기가 터졌습니다. 주변에서 하나둘 직장을 잃고 있습니다.",
     question: "이 위기를 어떻게 대처하시겠습니까?",
     background: "city_90s",
     choices: [
-      {
-        text: "금모으기 운동에 동참한다",
-        effects: { reputation: 20, faith: 10, nestEgg: -15, patience: 10 },
-        response: "결혼반지까지 내놓았습니다. 나라를 위해, 모두를 위해. 아내도 동의해주었습니다."
-      },
       {
         text: "회사에서 더 열심히 일하며 버틴다",
         effects: { work: 20, reputation: 15, health: -10 },
@@ -181,6 +176,11 @@ export const stages = [
         text: "가족과 함께 절약하며 이겨낸다",
         effects: { family: 20, nestEgg: 10, love: 10, patience: 15 },
         response: "외식을 줄이고, 가족끼리 집에서 시간을 보냈습니다. 오히려 가족이 더 가까워졌습니다."
+      },
+      {
+        text: "위기를 기회로, 저축을 늘린다",
+        effects: { nestEgg: 25, patience: 15, work: 5 },
+        response: "어려운 시기일수록 대비가 필요하다 생각했습니다. 허리띠를 졸라맸습니다."
       }
     ]
   },
@@ -194,19 +194,19 @@ export const stages = [
     background: "home_90s",
     choices: [
       {
-        text: "공부 강요 없이 자유롭게 키운다",
+        text: "아이들 스스로 선택하게 한다",
         effects: { family: 25, patience: 15, love: 10 },
-        response: "아이들이 하고 싶은 것을 할 수 있도록 지켜봐주기로 했습니다. 강요는 하지 않겠다고 다짐했습니다."
-      },
-      {
-        text: "신앙 안에서 바르게 키운다",
-        effects: { faith: 20, family: 15, patience: 10 },
-        response: "주일마다 함께 성당에 갔습니다. 하지만 강요하지는 않았습니다."
+        response: "아이들이 하고 싶은 것을 할 수 있도록 지켜봐주기로 했습니다."
       },
       {
         text: "사랑으로 감싸주며 키운다",
         effects: { love: 20, family: 20, patience: 10 },
         response: "아이들에게 '사랑해'라는 말을 아끼지 않았습니다."
+      },
+      {
+        text: "좋은 환경을 만들어준다",
+        effects: { nestEgg: -10, family: 20, reputation: 10 },
+        response: "아이들이 좋은 환경에서 자랄 수 있도록 최선을 다했습니다."
       }
     ]
   },
@@ -246,19 +246,19 @@ export const stages = [
     background: "home_2020",
     choices: [
       {
-        text: "학원 보내지 않고 자유롭게",
-        effects: { family: 20, patience: 15, nestEgg: 10 },
-        response: "학원에 보내는 대신 함께 책을 읽고, 자연을 보여주었습니다."
+        text: "아이의 관심사를 존중한다",
+        effects: { family: 20, patience: 15, love: 10 },
+        response: "아이가 좋아하는 것에 집중할 수 있도록 지켜봐주었습니다."
       },
       {
-        text: "기본적인 것만 챙겨준다",
-        effects: { family: 15, nestEgg: -5, patience: 10 },
-        response: "필요한 것은 지원하되, 강요하지 않았습니다."
+        text: "필요한 것만 지원한다",
+        effects: { family: 15, nestEgg: 5, patience: 10 },
+        response: "필요한 것은 지원하되, 과하지 않게 했습니다."
       },
       {
-        text: "아이가 원하는 것을 지원한다",
-        effects: { family: 20, love: 10, patience: 10 },
-        response: "아이가 하고 싶다고 하면 지원해주었습니다. 스스로 선택하게 했습니다."
+        text: "함께 시간을 보내며 가르친다",
+        effects: { family: 20, love: 15, work: -5 },
+        response: "직접 함께하며 세상을 알려주었습니다."
       }
     ]
   },
@@ -282,9 +282,9 @@ export const stages = [
         response: "위험한 투자보다 안전한 예금을 선택했습니다. 마음이 편했습니다."
       },
       {
-        text: "기부와 나눔을 실천한다",
-        effects: { faith: 20, reputation: 15, nestEgg: -10 },
-        response: "어려운 때일수록 나눔이 필요하다고 생각했습니다. 꾸준히 기부를 이어갔습니다."
+        text: "분산 투자로 리스크를 줄인다",
+        effects: { nestEgg: 20, patience: 10, work: 5 },
+        response: "한 곳에 몰빵하지 않고 다양하게 나눠 투자했습니다."
       }
     ]
   },
@@ -292,25 +292,25 @@ export const stages = [
     id: 12,
     year: 2010,
     era: "2010년대",
-    title: "꾸준한 기부",
-    description: "회사에서 안정적인 위치를 잡았습니다. 매달 꾸준히 기부를 하고 있습니다.",
-    question: "기부에 대해 어떻게 생각하시나요?",
-    background: "church_80s",
+    title: "회사의 중심",
+    description: "어느덧 회사에서 중요한 위치가 되었습니다. 후배들이 조언을 구해옵니다.",
+    question: "후배들에게 어떤 선배가 되고 싶으신가요?",
+    background: "office_2000",
     choices: [
       {
-        text: "티 내지 않고 꾸준히 기부한다",
-        effects: { faith: 20, reputation: 10, nestEgg: -10, patience: 15 },
-        response: "남들에게 알리지 않고 조용히 기부를 이어갔습니다. 신앙인으로서 당연한 일이라 생각했습니다."
+        text: "경험을 나눠주는 선배",
+        effects: { reputation: 20, work: 15, patience: 10 },
+        response: "그동안 배운 것들을 후배들에게 알려주었습니다."
       },
       {
-        text: "가족들에게도 나눔을 가르친다",
-        effects: { family: 20, faith: 15, love: 10 },
-        response: "아이들에게도 나눔의 의미를 알려주었습니다."
+        text: "묵묵히 일로 보여주는 선배",
+        effects: { work: 25, reputation: 10, health: -5 },
+        response: "말보다 행동으로 보여주는 게 낫다고 생각했습니다."
       },
       {
-        text: "더 많이 기부하고 싶다",
-        effects: { faith: 25, reputation: 15, nestEgg: -20 },
-        response: "받은 것이 많으니 나누는 것도 당연하다고 생각했습니다."
+        text: "후배들의 성장을 지켜보는 선배",
+        effects: { patience: 20, family: 10, reputation: 10 },
+        response: "간섭하기보다 스스로 성장할 수 있도록 지켜봐주었습니다."
       }
     ]
   },
@@ -331,12 +331,12 @@ export const stages = [
       {
         text: "경제적으로 지원해준다",
         effects: { family: 15, nestEgg: -20, love: 10 },
-        response: "학비와 용돈을 지원하며 공부에 집중할 수 있게 해주었습니다."
+        response: "학비와 용돈을 지원하며 하고 싶은 것을 할 수 있게 해주었습니다."
       },
       {
-        text: "인생 조언을 해준다",
-        effects: { family: 15, reputation: 10, faith: 10 },
-        response: "살아온 경험을 나누며 조언해주었습니다. 강요가 아닌 제안으로."
+        text: "필요할 때 조언해준다",
+        effects: { family: 15, reputation: 10, patience: 10 },
+        response: "살아온 경험을 나누며 조언해주었습니다. 필요할 때만."
       }
     ]
   },
@@ -350,9 +350,9 @@ export const stages = [
     background: "university",
     choices: [
       {
-        text: "뿌듯하다. 잘 키웠다",
+        text: "뿌듯하다. 잘 자라주었다",
         effects: { family: 20, love: 15, patience: 10 },
-        response: "강요 없이 자유롭게 키웠는데 잘 자라주었습니다. 감사한 마음입니다."
+        response: "아이들이 건강하게 잘 자라주었습니다. 감사한 마음입니다."
       },
       {
         text: "이제 아내와의 시간을 더 갖겠다",
@@ -360,8 +360,8 @@ export const stages = [
         response: "아이들 키우느라 바빴던 시간... 이제 아내와 더 많은 시간을 보내기로 했습니다."
       },
       {
-        text: "부모님께 더 효도해야겠다",
-        effects: { family: 20, faith: 15, reputation: 10 },
+        text: "부모님께 더 자주 가봐야겠다",
+        effects: { family: 25, patience: 10, reputation: 10 },
         response: "부모님도 연로해지셨습니다. 더 자주 찾아뵙기로 했습니다."
       }
     ]
@@ -386,8 +386,8 @@ export const stages = [
         response: "형제들과 다툼 없이 나누었습니다. 부모님이 기뻐하셨습니다."
       },
       {
-        text: "부모님께 더 효도한다",
-        effects: { family: 20, faith: 15, love: 10 },
+        text: "부모님과 더 자주 시간을 보낸다",
+        effects: { family: 25, love: 10, patience: 10 },
         response: "물질적인 것보다 부모님과 함께하는 시간이 더 중요하다고 생각했습니다."
       }
     ]
@@ -456,12 +456,12 @@ export const stages = [
       {
         text: "아내와 여행을 다니고 싶다",
         effects: { love: 25, health: 15, family: 10 },
-        response: "신학대학에서 만난 그녀와 함께 세상을 여행하고 싶습니다."
+        response: "함께 세상을 여행하고 싶습니다. 그동안 바빠서 못 갔던 곳들이 많습니다."
       },
       {
-        text: "성당에서 봉사하고 싶다",
-        effects: { faith: 25, reputation: 15, family: 10 },
-        response: "신부가 되지는 못했지만, 다른 방식으로 하느님을 섬기겠습니다."
+        text: "건강 관리하며 여유롭게",
+        effects: { health: 25, patience: 15, family: 10 },
+        response: "이제 천천히 살고 싶습니다. 건강이 최고입니다."
       },
       {
         text: "자녀들과 더 많은 시간을",
@@ -475,25 +475,25 @@ export const stages = [
     year: 2025,
     era: "현재",
     title: "은퇴",
-    description: "드디어 은퇴의 날입니다. 신학대학 후배와 결혼해 개발자가 되고, 두 자녀를 키우고, 꾸준히 기부하며 살아온 인생... 모든 것이 감사합니다.",
+    description: "드디어 은퇴의 날입니다. 개발자로 30년, 두 자녀를 키우며 살아온 인생... 감회가 새롭습니다.",
     question: "은퇴식에서 무슨 말을 하시겠습니까?",
     background: "retirement",
     isEnding: true,
     choices: [
       {
         text: "가족에게 감사를 전한다",
-        effects: { family: 30, love: 25, faith: 10 },
-        response: "\"신부의 길 대신 가정을 선택한 것... 후회 없습니다. 사랑하는 아내와 원경이, 효경이가 있어 행복했습니다.\""
+        effects: { family: 30, love: 25, patience: 10 },
+        response: "\"사랑하는 아내와 원경이, 효경이가 있어 행복했습니다. 고마워요.\""
       },
       {
-        text: "하느님께 감사를 드린다",
-        effects: { faith: 30, family: 15, patience: 10 },
-        response: "\"신부는 되지 못했지만, 다른 방식으로 신앙을 지켜왔습니다. 모든 것이 은혜였습니다.\""
+        text: "동료들에게 감사를 전한다",
+        effects: { reputation: 25, work: 15, patience: 10 },
+        response: "\"30년간 함께한 동료들 덕분에 여기까지 왔습니다. 감사합니다.\""
       },
       {
-        text: "함께한 모든 이들에게 감사",
-        effects: { reputation: 25, family: 20, love: 10 },
-        response: "\"함께 일한 동료들, 가족들, 그리고 저를 이끌어주신 모든 분들께 감사드립니다.\""
+        text: "지나온 시간에 감사한다",
+        effects: { patience: 25, family: 20, love: 10 },
+        response: "\"좋은 일도, 힘든 일도 있었지만 모든 순간이 의미 있었습니다.\""
       }
     ]
   },
