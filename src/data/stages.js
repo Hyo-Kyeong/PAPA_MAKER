@@ -382,12 +382,12 @@ export const stages = [
       },
       {
         text: "형제들과 사이좋게 나눈다",
-        effects: { family: 25, patience: 15, reputation: 10 },
+        effects: { nestEgg: 15, family: 25, patience: 15, reputation: 10 },
         response: "형제들과 다툼 없이 나누었습니다. 부모님이 기뻐하셨습니다."
       },
       {
         text: "부모님과 더 자주 시간을 보낸다",
-        effects: { family: 25, love: 10, patience: 10 },
+        effects: { nestEgg: 20, family: 25, love: 10, patience: 10 },
         response: "물질적인 것보다 부모님과 함께하는 시간이 더 중요하다고 생각했습니다."
       }
     ]
