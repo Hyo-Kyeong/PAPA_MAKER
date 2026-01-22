@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@theme {
+  --font-galmuri: 'Galmuri11', 'DungGeunMo', monospace;
+  --color-retro-cream: #f5e6d3;
+  --color-retro-brown: #8b7355;
+  --color-retro-dark: #4a3728;
+  --color-retro-accent: #c4956a;
+  --color-retro-light: #fff8f0;
+  --color-stat-work: #4a90a4;
+  --color-stat-faith: #9b7ed9;
+  --color-stat-love: #e88b8b;
+  --color-stat-family: #7bc47f;
+  --color-stat-reputation: #d4a745;
+  --color-stat-health: #e85d5d;
+  --color-stat-nestegg: #5cb85c;
+  --color-stat-patience: #5bc0de;
+}
+
+@font-face {
+  font-family: 'DungGeunMo';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: 'DungGeunMo', monospace;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #f5e6d3 0%, #e8d4bc 100%);
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.pixel-border {
+  border: 4px solid #4a3728;
+  box-shadow:
+    inset -4px -4px 0px 0px #8b7355,
+    inset 4px 4px 0px 0px #fff8f0,
+    6px 6px 0px 0px rgba(0,0,0,0.2);
+}
+
+.pixel-button {
+  border: 3px solid #4a3728;
+  box-shadow:
+    inset -2px -2px 0px 0px #8b7355,
+    inset 2px 2px 0px 0px #fff8f0,
+    4px 4px 0px 0px rgba(0,0,0,0.3);
+  transition: all 0.1s ease;
+}
+
+.pixel-button:hover {
+  transform: translate(2px, 2px);
+  box-shadow:
+    inset -2px -2px 0px 0px #8b7355,
+    inset 2px 2px 0px 0px #fff8f0,
+    2px 2px 0px 0px rgba(0,0,0,0.3);
+}
+
+.pixel-button:active {
+  transform: translate(4px, 4px);
+  box-shadow:
+    inset -2px -2px 0px 0px #8b7355,
+    inset 2px 2px 0px 0px #fff8f0;
+}
+
+.stat-bar {
+  height: 16px;
+  border: 2px solid #4a3728;
+  background: #fff8f0;
+  position: relative;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  transition: width 0.5s ease-out;
+}
+
+.text-shadow-retro {
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+}
+
+.scanlines {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.03),
+    rgba(0, 0, 0, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  z-index: 1000;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s infinite;
+}
+
+.vignette {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.15) 100%);
+  z-index: 999;
+}
