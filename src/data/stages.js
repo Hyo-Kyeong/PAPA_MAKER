@@ -1,5 +1,6 @@
 // 아버지의 실제 이야기를 담은 스테이지
 // 1965년생 아버지의 인생 여정
+// 분기형 스토리 구조 - choice에 nextStage로 분기 지정
 
 export const stages = [
   {
@@ -40,15 +41,19 @@ export const stages = [
       {
         text: "신학대학에 입학하여 신부의 길을 간다",
         effects: { faith: 25, patience: 15, work: -5 },
-        response: "용기를 내어 신학대학에 입학했습니다. 하느님의 부르심에 응답하기로 했습니다."
+        response: "용기를 내어 신학대학에 입학했습니다. 하느님의 부르심에 응답하기로 했습니다.",
+        nextStage: 3  // 신학대학 스토리로
       },
       {
         text: "일단 취직하고 신앙생활은 평신도로",
         effects: { work: 20, nestEgg: 15, faith: 5 },
-        response: "현실적인 선택을 했습니다. 좋은 직장에 취직하여 사회생활을 시작했습니다."
+        response: "현실적인 선택을 했습니다. 좋은 직장에 취직하여 사회생활을 시작했습니다.",
+        nextStage: 101  // 대체 스토리라인으로
       }
     ]
   },
+
+  // ========== 메인 스토리라인 (신학대학 루트) ==========
   {
     id: 3,
     year: 1991,
@@ -61,17 +66,20 @@ export const stages = [
       {
         text: "마음을 숨기고 신부의 길을 계속 간다",
         effects: { faith: 15, patience: 20, love: -10 },
-        response: "기도하며 마음을 다잡았습니다. 하지만 그녀의 모습이 자꾸 떠올랐습니다."
+        response: "기도하며 마음을 다잡았습니다. 하지만 그녀의 모습이 자꾸 떠올랐습니다.",
+        nextStage: 201  // 신부 루트로
       },
       {
         text: "용기를 내어 다가가 마음을 전한다",
         effects: { love: 25, faith: -5, family: 10 },
-        response: "떨리는 마음으로 말을 걸었습니다. 그녀도 미소로 답해주었습니다."
+        response: "떨리는 마음으로 말을 걸었습니다. 그녀도 미소로 답해주었습니다.",
+        nextStage: 4
       },
       {
         text: "기도하며 하느님의 뜻을 구한다",
         effects: { faith: 20, patience: 15, love: 5 },
-        response: "무릎 꿇고 기도했습니다. '제 길을 인도해 주소서...'"
+        response: "무릎 꿇고 기도했습니다. '제 길을 인도해 주소서...'",
+        nextStage: 4
       }
     ]
   },
@@ -87,12 +95,14 @@ export const stages = [
       {
         text: "사랑하는 그녀와 가정을 이루기로 한다",
         effects: { love: 30, family: 25, faith: 5 },
-        response: "오랜 고민 끝에 결정했습니다. 신부의 길 대신 가정을 선택했습니다. 하느님은 다른 방식으로 섬기기로 했습니다."
+        response: "오랜 고민 끝에 결정했습니다. 신부의 길 대신 가정을 선택했습니다. 하느님은 다른 방식으로 섬기기로 했습니다.",
+        nextStage: 5
       },
       {
         text: "신부의 소명을 따르기로 한다",
         effects: { faith: 30, patience: 20, love: -20 },
-        response: "눈물을 머금고 그녀에게 이별을 고했습니다. 신부의 길을 가기로 했습니다."
+        response: "눈물을 머금고 그녀에게 이별을 고했습니다. 신부의 길을 가기로 했습니다.",
+        nextStage: 201  // 신부 루트로
       }
     ]
   },
@@ -306,7 +316,7 @@ export const stages = [
   },
   {
     id: 13,
-    year: 2013,
+    year: 2014,
     era: "2010년대",
     title: "원경이의 대학 입학",
     description: "원경이가 대학생이 되었습니다. 시간이 정말 빠르네요.",
@@ -332,7 +342,7 @@ export const stages = [
   },
   {
     id: 14,
-    year: 2017,
+    year: 2018,
     era: "2010년대",
     title: "효경이의 대학 입학",
     description: "막내 효경이도 대학생이 되었습니다. 이제 두 자녀 모두 성인이 되었습니다.",
@@ -465,9 +475,10 @@ export const stages = [
     year: 2025,
     era: "현재",
     title: "은퇴",
-    description: "드디어 은퇴의 날입니다. 신학대학 후배와 결혼해 개발자가 되고, 두 자녀를 키우고, 꾸준히 기부하며 살아온 40년... 모든 것이 감사합니다.",
+    description: "드디어 은퇴의 날입니다. 신학대학 후배와 결혼해 개발자가 되고, 두 자녀를 키우고, 꾸준히 기부하며 살아온 인생... 모든 것이 감사합니다.",
     question: "은퇴식에서 무슨 말을 하시겠습니까?",
     background: "retirement",
+    isEnding: true,
     choices: [
       {
         text: "가족에게 감사를 전한다",
@@ -485,7 +496,134 @@ export const stages = [
         response: "\"함께 일한 동료들, 가족들, 그리고 저를 이끌어주신 모든 분들께 감사드립니다.\""
       }
     ]
+  },
+
+  // ========== 대체 스토리라인 1: 취직 루트 (id: 101~) ==========
+  {
+    id: 101,
+    year: 1990,
+    era: "사회초년생",
+    title: "직장 생활의 시작",
+    description: "좋은 회사에 취직했습니다. 서울대 출신답게 인정받고 있습니다. 하지만 가끔 신부의 꿈이 떠오릅니다.",
+    question: "회사 생활을 어떻게 하시겠습니까?",
+    background: "office_90s",
+    choices: [
+      {
+        text: "열심히 일하며 출세를 목표로",
+        effects: { work: 25, reputation: 20, nestEgg: 15 },
+        response: "승승장구했습니다. 젊은 나이에 과장으로 승진했습니다.",
+        nextStage: 102
+      },
+      {
+        text: "일과 신앙생활의 균형을 맞춘다",
+        effects: { faith: 15, work: 15, patience: 10 },
+        response: "주일에는 꼭 성당에 갔습니다. 평신도로서의 삶도 의미있었습니다.",
+        nextStage: 102
+      }
+    ]
+  },
+  {
+    id: 102,
+    year: 1993,
+    era: "사회에서의 만남",
+    title: "성당에서 다시 만난 인연",
+    description: "직장 근처 성당에서 미사를 드리던 중, 눈에 띄는 여성이 있었습니다. 어딘가 익숙한 얼굴...",
+    question: "용기를 내어 말을 걸어볼까요?",
+    background: "church_80s",
+    choices: [
+      {
+        text: "말을 걸어본다",
+        effects: { love: 25, faith: 10, family: 10 },
+        response: "알고 보니 같은 대학 후배였습니다. 6살 어린 그녀... 운명처럼 느껴졌습니다.",
+        nextStage: 103
+      },
+      {
+        text: "그냥 지나친다",
+        effects: { patience: 10, work: 10 },
+        response: "인연이 아니었나 봅니다. 다시 일에 집중했습니다.",
+        nextStage: "ending_alone"  // 혼자 사는 엔딩
+      }
+    ]
+  },
+  {
+    id: 103,
+    year: 1994,
+    era: "새로운 시작",
+    title: "결혼",
+    description: "성당에서 다시 만난 그녀와 교제 끝에 결혼하게 되었습니다. 신학대학에서 만났다면 어땠을까... 하지만 지금 이대로도 행복합니다.",
+    question: "결혼 후 어떻게 살고 싶으신가요?",
+    background: "wedding",
+    choices: [
+      {
+        text: "행복한 가정을 꾸리겠다",
+        effects: { family: 25, love: 20, faith: 10 },
+        response: "늦었지만, 아니 어쩌면 딱 맞는 타이밍에 만난 것인지도 모릅니다.",
+        nextStage: 6  // 메인 스토리 원경이 탄생으로 합류
+      }
+    ]
+  },
+
+  // ========== 대체 스토리라인 2: 신부 루트 (id: 201~) ==========
+  {
+    id: 201,
+    year: 1995,
+    era: "신부의 길",
+    title: "서품",
+    description: "오랜 준비 끝에 신부로 서품받았습니다. 가끔 그녀 생각이 나지만, 이것이 하느님의 뜻이라 믿습니다.",
+    question: "어떤 신부가 되고 싶으신가요?",
+    background: "church_80s",
+    choices: [
+      {
+        text: "봉사하는 신부",
+        effects: { faith: 30, reputation: 25, patience: 20 },
+        response: "가난한 이들을 위해 봉사하며 살기로 했습니다.",
+        nextStage: 202
+      },
+      {
+        text: "가르치는 신부",
+        effects: { faith: 25, reputation: 20, work: 15 },
+        response: "젊은이들에게 신앙을 가르치는 일에 헌신하기로 했습니다.",
+        nextStage: 202
+      }
+    ]
+  },
+  {
+    id: 202,
+    year: 2025,
+    era: "현재",
+    title: "30년의 사제 생활",
+    description: "30년간 신부로 살았습니다. 많은 신자들을 만나고, 기쁨과 슬픔을 함께했습니다. 가끔 그녀 생각이 나지만, 후회는 없습니다.",
+    question: "신부로서의 삶을 돌아보며...",
+    background: "church_80s",
+    isEnding: true,
+    endingId: "priest_ending",
+    choices: [
+      {
+        text: "하느님께 모든 영광을",
+        effects: { faith: 40, reputation: 30, patience: 20 },
+        response: "\"제 삶의 모든 순간이 은총이었습니다. 하느님, 감사합니다.\""
+      },
+      {
+        text: "신자들에게 감사를",
+        effects: { faith: 30, reputation: 35, love: 10 },
+        response: "\"함께 신앙의 여정을 걸어온 모든 분들께 감사드립니다.\""
+      }
+    ]
   }
 ];
+
+// 스테이지 ID로 찾기 헬퍼
+export const getStageById = (id) => stages.find(s => s.id === id);
+
+// 다음 스테이지 ID 계산 (분기가 없을 때)
+export const getDefaultNextStageId = (currentId) => {
+  // 메인 스토리 (1-19)
+  if (currentId >= 1 && currentId < 19) return currentId + 1;
+  // 취직 루트 (101-103)
+  if (currentId >= 101 && currentId < 103) return currentId + 1;
+  // 신부 루트 (201-202)
+  if (currentId >= 201 && currentId < 202) return currentId + 1;
+  return null;
+};
 
 export default stages;

@@ -12,8 +12,8 @@ function App() {
     statLabels,
     statColors,
     currentStage,
-    currentStageIndex,
-    totalStages,
+    stageCount,
+    progress,
     lastChoice,
     ending,
     startGame,
@@ -55,8 +55,8 @@ function App() {
               statLabels={statLabels}
               statColors={statColors}
               currentStage={currentStage}
-              currentStageIndex={currentStageIndex}
-              totalStages={totalStages}
+              stageCount={stageCount}
+              progress={progress}
               lastChoice={lastChoice}
               makeChoice={makeChoice}
               nextStage={nextStage}

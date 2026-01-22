@@ -29,8 +29,8 @@ const GameScreen = ({
   statLabels,
   statColors,
   currentStage,
-  currentStageIndex,
-  totalStages,
+  stageCount,
+  progress,
   lastChoice,
   makeChoice,
   nextStage,
@@ -61,13 +61,13 @@ const GameScreen = ({
       <div className="mb-4">
         <div className="flex justify-between text-sm text-[#8b7355] mb-1">
           <span>{currentStage?.title}</span>
-          <span>{currentStageIndex + 1} / {totalStages}</span>
+          <span>진행도: {Math.round(progress)}%</span>
         </div>
         <div className="h-2 bg-[#e8d4bc] rounded overflow-hidden border border-[#8b7355]">
           <motion.div
             className="h-full bg-[#c4956a]"
             initial={{ width: 0 }}
-            animate={{ width: `${((currentStageIndex + 1) / totalStages) * 100}%` }}
+            animate={{ width: `${progress}%` }}
             transition={{ duration: 0.3 }}
           />
         </div>
@@ -179,7 +179,7 @@ const GameScreen = ({
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  {currentStageIndex < totalStages - 1 ? '다음으로' : '결과 보기'}
+                  {currentStage?.isEnding ? '결과 보기' : '다음으로'}
                 </motion.button>
               )}
             </>
